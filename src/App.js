@@ -1,14 +1,45 @@
-import React from "react";
-import { Counter } from "./features/Counter";
+import React, { useEffect } from "react";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import Chat from "./components/Chat";
+import { useSelector, useDispatch } from "react-redux";
+import { selectUser } from "./features/userSlice";
+import Login from "./components/Login";
+import { auth } from "./firebase";
+// import actions
+import { login, logout } from "./features/userSlice";
 
 function App() {
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        // user logged in
+        dispatch(
+          login({
+            uid: authUser.uid,
+            photo: authUser.photoURL,
+            displayName: authUser.displayName,
+          })
+        );
+      } else {
+        // user logged out
+        dispatch(logout());
+      }
+    });
+  }, []);
+
   return (
     <div className="app">
-      <Sidebar />
-      <Chat />
+      {user ? (
+        <>
+          <Sidebar />
+          <Chat />
+        </>
+      ) : (
+        <Login />
+      )}
     </div>
   );
 }
