@@ -1,0 +1,33 @@
+[debug] [2020-10-17T14:27:50.161Z] ----------------------------------------------------------------------
+[debug] [2020-10-17T14:27:50.164Z] Command:       /home/dineth/.nvm/versions/node/v12.18.3/bin/node /home/dineth/.nvm/versions/node/v12.18.3/bin/firebase deploy
+[debug] [2020-10-17T14:27:50.165Z] CLI Version:   8.7.0
+[debug] [2020-10-17T14:27:50.165Z] Platform:      linux
+[debug] [2020-10-17T14:27:50.166Z] Node Version:  v12.18.3
+[debug] [2020-10-17T14:27:50.167Z] Time:          Sat Oct 17 2020 19:57:50 GMT+0530 (India Standard Time)
+[debug] [2020-10-17T14:27:50.167Z] ----------------------------------------------------------------------
+[debug] [2020-10-17T14:27:50.167Z] 
+[debug] [2020-10-17T14:27:50.177Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-10-17T14:27:50.178Z] > authorizing via signed-in user
+[debug] [2020-10-17T14:27:50.178Z] [iam] checking project discord-59ab2 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-10-17T14:27:50.182Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/discord-59ab2:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-10-17T14:27:51.516Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 17 Oct 2020 14:27:52 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1043","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-17T14:27:51.524Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/discord-59ab2  
+ 
+[debug] [2020-10-17T14:27:51.960Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 17 Oct 2020 14:27:52 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'discord-59ab2'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2020-10-17T14:27:52.172Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/discord-59ab2/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2020-10-17T14:27:53.876Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 17 Oct 2020 14:27:54 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[discord-59ab2]: beginning deploy... 
+[info] i  hosting[discord-59ab2]: found 18 files in build 
+[debug] [2020-10-17T14:27:54.824Z] [hosting] hash cache [YnVpbGQ] stored for 18 files
+[debug] [2020-10-17T14:27:54.825Z] [hosting][hash queue][FINAL] {"max":729,"min":55,"avg":107.38888888888889,"active":0,"complete":18,"success":18,"errored":0,"retried":0,"total":18,"elapsed":750}
+[debug] [2020-10-17T14:27:54.825Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/discord-59ab2/versions/ae327c4a9f452c9a:populateFiles  
+ <request body omitted>
+[debug] [2020-10-17T14:27:56.316Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 17 Oct 2020 14:27:57 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-17T14:27:56.344Z] [hosting][populate queue][FINAL] {"max":1498,"min":1498,"avg":1498,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":1521}
+[debug] [2020-10-17T14:27:56.346Z] [hosting] uploads queued: 6
