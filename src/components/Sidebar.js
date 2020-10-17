@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Sidebar.css";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddIcon from "@material-ui/icons/Add";
@@ -12,10 +12,34 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import { Avatar } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
-import { auth } from "../firebase";
+import db, { auth } from "../firebase";
 
 function Sidebar() {
   const user = useSelector(selectUser);
+  const [channels, setChannels] = useState([]);
+
+  const handleAddChannel = () => {
+    const channelName = prompt("Enter a new channel name");
+    // when the user enter name, it will add channel to db and trigger useEffect below
+    if (channelName) {
+      db.collection("channels").add({
+        channelName: channelName,
+      });
+    }
+  };
+  // This updates channel local state whenever the channels collection in firebase changes
+  // Dont quite under stand how this refreshes local state when new channel added
+  useEffect(() => {
+    console.log("Detected change in Channels in Firebase");
+    db.collection("channels").onSnapshot((snapshot) =>
+      setChannels(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          channel: doc.data(),
+        }))
+      )
+    );
+  }, []);
   return (
     <div className="sidebar">
       <div className="sidebar__top">
@@ -29,13 +53,16 @@ function Sidebar() {
             <ExpandMoreIcon />
             <h4>Text Channels</h4>
           </div>
-          <AddIcon className="sidebar__addChannel" />
+          <AddIcon className="sidebar__addChannel" onClick={handleAddChannel} />
         </div>
         <div className="sidebar__channelsList">
-          <SidebarChannel />
-          <SidebarChannel />
-          <SidebarChannel />
-          <SidebarChannel />
+          {channels.map(({ id, channel }) => (
+            <SidebarChannel
+              key={id}
+              id={id}
+              channelName={channel.channelName}
+            />
+          ))}
         </div>
       </div>
       <div className="sidebar__voice">
